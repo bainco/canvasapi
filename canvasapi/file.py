@@ -27,7 +27,7 @@ class File(CanvasObject):
         :param location: The path to download to.
         :type location: str
         """
-        response = self._requester.request("GET", _url=self.url)
+        response = self._requester.request("GET", _url=self.url, use_auth=False)
 
         with open(location, "wb") as file_out:
             file_out.write(response.content)
@@ -39,7 +39,7 @@ class File(CanvasObject):
 
         :rtype: str or bytes
         """
-        response = self._requester.request("GET", _url=self.url)
+        response = self._requester.request("GET", _url=self.url, use_auth=False)
         if binary:
             return response.content
         else:
