@@ -43,6 +43,18 @@ class TestSubmission(unittest.TestCase):
         self.assertTrue(hasattr(submission.attachments[0], "id"))
         self.assertEqual(submission.attachments[0].id, 123)
 
+    def test__init__history(self, m):
+        register_uris({"submission": ["get_by_id_with_submission_history"]}, m)
+
+        submission = self.assignment.get_submission(1)
+
+        self.assertTrue(hasattr(submission, "submission_history"))
+        self.assertIsInstance(submission.submission_history, list)
+        self.assertEqual(len(submission.submission_history), 1)
+        self.assertIsInstance(submission.submission_history[0], Submission)
+        self.assertTrue(hasattr(submission.submission_history[0], "id"))
+        self.assertEqual(submission.submission_history[0].id, 123)
+
     # __str__()
     def test__str__(self, m):
         string = str(self.submission)

@@ -72,6 +72,27 @@
 		},
 		"status_code": 200
 	},
+	"get_by_id_with_submission_history": {
+		"method": "GET",
+		"endpoint": "courses/1/assignments/1/submissions/1",
+		"data": {
+			"id": 1,
+			"assignment_id": 1,
+			"user_id": 1,
+			"html_url": "https://example.com/courses/1/assignments/1/submissions/1",
+			"submission_type": "online_upload",
+			"submission_history": [
+				{
+					"id": 123,
+					"assignment_id": 1,
+					"user_id": 1,
+					"html_url": "https://example.com/courses/1/assignments/1/submissions/1",
+					"submission_type": "online_upload"
+				}
+			]
+		},
+		"status_code": 200
+	},
 	"get_times": {
 		"method": "GET",
 		"endpoint": "courses/1/quizzes/1/submissions/1/time",

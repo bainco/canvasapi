@@ -10,6 +10,12 @@ class Submission(CanvasObject):
     def __init__(self, requester, attributes):
         super(Submission, self).__init__(requester, attributes)
 
+        if "submission_history" in attributes:
+            self.submission_history = [
+                Submission(requester, submission)
+                for submission in attributes.get("submission_history", [])
+            ]
+
         self.attachments = [
             File(requester, attachment)
             for attachment in attributes.get("attachments", [])
